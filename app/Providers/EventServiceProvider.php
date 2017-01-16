@@ -14,9 +14,11 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'papertracker\Events\SomeEvent' => [
-            'papertracker\Listeners\EventListener',
+            'papertracker\Listeners\LogoutListener',
         ],
     ];
+
+    protected $subscribe = ['papertracker\Listeners\LogoutListener'];
 
     /**
      * Register any events for your application.

@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('role', ['author', 'reviewer', 'editor']);
             $table->rememberToken();
-            $table->dateTime('last_login');
             $table->timestamps();
         });
     }
