@@ -5,6 +5,7 @@ namespace papertracker\Listeners;
 use papertracker\Events\SomeEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\DB;
 
 class LogoutListener
 {
@@ -26,7 +27,6 @@ class LogoutListener
      */
     public function subscribe($events)
     {
-
          $events->listen(
              'Illuminate\Auth\Events\Logout',
              'papertracker\Listeners\LogoutListener@onUserLogout'
@@ -34,6 +34,10 @@ class LogoutListener
     }
 
     public function onUserLogout($event) {
-        dd($event);
+      if ($event->user) {
+        $user = $event->user;
+        $user->last_logout = DB::raw('CURRENT_TIMESTAMP');
+        $user->save();
+      }
     }
 }
