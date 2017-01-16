@@ -50,7 +50,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'affiliation' => 'required|max:255',
+            'role' => 'required|in_array:["author", "reviewer"]',
             'password' => 'required|min:6|confirmed',
+        ],
+        [
+            'affiliation.required' => 'Please list the university you are affiliated with.',
+            'role.required' => 'Please select a role from the list.',
         ]);
     }
 
@@ -65,6 +71,8 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'affiliation' => $data['affiliation'],
+            'role' => $data['role'],
             'password' => bcrypt($data['password']),
         ]);
     }

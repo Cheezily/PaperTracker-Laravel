@@ -14,7 +14,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"  autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -28,7 +28,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" >
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -37,6 +37,40 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group{{ $errors->has('affiliation') ? ' has-error' : '' }}">
+                            <label for="affiliation" class="col-md-4 control-label">University Affiliation</label>
+
+                            <div class="col-md-6">
+                                <input id="affiliation" type="text" class="form-control" name="affiliation" value="{{ old('affiliation') }}"  autofocus>
+
+                                @if ($errors->has('affiliation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('affiliation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                            <label for="role" class="col-md-4 control-label">Select Your Role</label>
+
+                            <div class="col-md-6">
+                                <select id="role" class="form-control" name="role" value="{{ old('role') }}"  autofocus>
+                                    <option value='' selected='true' disabled='disabled'>Please Select an Option</option>
+                                    <option value='author'>Author - You'll Be Submitting Papers</option>
+                                    <option value='reviewer'>Reviewer - You'll Be Reviewing Papers</option>
+                                </select>
+
+                                @if ($errors->has('role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <hr />
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
