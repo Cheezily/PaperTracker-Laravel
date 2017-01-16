@@ -18,7 +18,7 @@ class CreateRepliesTable extends Migration
             $table->integer('thread_id');
             $table->integer('user_id');
             $table->text('reply');
-            $table->dateTimeTz('created_at');
+            $table->timestamps();
         });
     }
 

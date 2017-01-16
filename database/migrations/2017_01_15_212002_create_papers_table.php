@@ -40,17 +40,18 @@ class CreatePapersTable extends Migration
               'rejected',
             ]);
             $table->enum('final_decision', ['accepted', 'rejected']);
-            $table->dateTimeTz('when_submitted');
-            $table->dateTimeTz('when_assigned');
-            $table->dateTimeTz('when_initial_review');
-            $table->dateTimeTz('when_editor_initial_decision');
-            $table->dateTimeTz('when_revision_submitted');
-            $table->dateTimeTz('when_final_review');
-            $table->dateTimeTz('when_complete');
+            $table->dateTime('when_submitted');
+            $table->dateTime('when_assigned');
+            $table->dateTime('when_initial_review');
+            $table->dateTime('when_editor_initial_decision');
+            $table->dateTime('when_revision_submitted');
+            $table->dateTime('when_final_review');
+            $table->dateTime('when_complete');
             $table->text('editor_notes');
-            $table->dateTimeTz('when_editor_notes');
+            $table->dateTime('when_editor_notes');
             $table->text('final_notes');
-            $table->dateTimeTz('when_final_notes');
+            $table->dateTime('when_final_notes');
+            $table->timestamps();
         });
     }
 
